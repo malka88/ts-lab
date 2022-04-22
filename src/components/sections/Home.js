@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import TypeWriterText from '../TypeWriterText'
 import RoundText from '../../assets/roundText.png'
+import Hexagons from '../../assets/Hexagons.svg'
 import { keyframes} from "styled-components"
 
 const Section = styled.section`
@@ -14,12 +15,16 @@ const Section = styled.section`
 const Container = styled.div`
   width: 100%;
   min-height: ${props => `calc(100vh - ${props.theme.navHeight})`};
-  margin: 0 auto;
 
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
+
+  @media (max-width: 48em){
+    justify-content: center;
+    align-items: center;
+  }
 
 `
 const Ection = styled.div`
@@ -32,10 +37,14 @@ const Ection = styled.div`
 
 const Triangle = styled.div`
   height: 50vh;
-  width: 40vw;
-  background-color: ${props => props.theme.highlight};
-  -webkit-clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+  width: 30vw;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `
 
 const rotate = keyframes`
@@ -45,24 +54,46 @@ const rotate = keyframes`
 `
 
 const Round = styled.div`
-  width: 15rem;
-  height: 15rem;
-  transform: translate(20%, -20%);
+  width: 20rem;
+  height: 20rem;
+  transform: translate(20%, -25%);
+
+  @media (max-width: 64em){
+    width: 15rem;
+    height: 15rem;
+  }
+
+  @media (max-width: 48em){
+    width: 10rem;
+    height: 10rem;
+  }
 
   img{
     width: 100%;
     height: auto;
-    animation: ${rotate} 6s linear infinite reverse;
+    animation: ${rotate} 15s linear infinite;
+    border: 1px solid ${props => props.theme.text};
+    border-radius: 50%;
   }
 `
 
 const Circle = styled.span`
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+
+  @media (max-width: 70em){
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @media (max-width: 48em){
+    width: 2rem;
+    height: 2rem;
+  }
 
   position: relative;
   top: 50%;
@@ -72,6 +103,7 @@ const Circle = styled.span`
   background-color: ${props => props.theme.text};
   color: ${props => props.theme.body};
   font-size: ${props => props.theme.arrowSize};
+  font-style: 200;
 `
 
 const Home = () => {
@@ -83,9 +115,11 @@ const Home = () => {
             <Circle>
               &#x2193;
             </Circle>
-            <img src={RoundText} alt="Курс" />
+            <img src={RoundText} alt=""/>
           </Round>
-          <Triangle />
+          <Triangle>
+          <img src={Hexagons} alt=""/>
+          </Triangle>
         </Ection>
         <TypeWriterText />
       </Container>

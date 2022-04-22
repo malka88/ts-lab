@@ -1,22 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import styled from 'styled-components';
+import LogoImg from '../assets/Logo.svg'
 
-const LogoText = styled.h1`
-    font-family: 'DotGothic16', sans-serif;
-    font-size: ${props => props.theme.fontxxxl};
-    color: ${props => props.theme.text};
+const LogoText = styled.a`
+  cursor: pointer;
+  font-size: ${props => props.theme.fontxxxl};
+  
+  img{
+    width: ${props => props.theme.fontlg};
+
+    @media (max-width: 64em){
+      width: ${props => props.theme.fontmd};
+    }
+  }
+
+  
 `
 
 const Logo = () => {
   return (
-    <Router>
-        <LogoText>
-            <Link to="/">
-                Ц.
-            </Link>
-        </LogoText>
-    </Router>
+    <LogoText href='/'>
+      <img src={LogoImg} alt=""/>
+    </LogoText>
   )
 }
 

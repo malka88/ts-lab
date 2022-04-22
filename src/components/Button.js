@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Btn = styled.button`
+const Btn = styled.a`
 	background: none;
     pointer-events: auto;
 	cursor: pointer;
@@ -12,6 +12,17 @@ const Btn = styled.button`
 
 	position: relative;
 	display: inline-block;
+
+    @media (max-width: 64em) {
+        padding: 1rem 2rem;
+        font-size: ${props => props.theme.fontmd};
+    }
+
+    @media (max-width: 48em) {
+        padding: 1rem 0.5rem;
+        font-size: ${props => props.theme.fontxs};
+    }
+
 
     &::before,
     &::after {
@@ -24,12 +35,12 @@ const Btn = styled.button`
 
     & span {
         display: block;
-        mix-blend-mode: difference;
+        mix-blend-mode: hard-light;
         transition: transform 0.4s cubic-bezier(0.2, 1, 0.8, 1);
     }
 
     &:hover span {
-        transform: translate3d(-10px,0,0);
+        transform: translate3d(-5px,0,0);
     }
 
     &::before {
@@ -44,16 +55,15 @@ const Btn = styled.button`
         background: #000;
         -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
         clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+        background: ${props => props.theme.text};
     }
 
 `
 
-const Button = ({text, link}) => {
+const Button = ({text, link, target}) => {
   return (
-    <Btn>
-        <a href={link} aria-label={text} target="_blank" rel="noreferrer">
-            <span>{text}</span>
-        </a>
+    <Btn href={link} target={target}>
+        <span>{text}</span>
     </Btn>
   )
 }

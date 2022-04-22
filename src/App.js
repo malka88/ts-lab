@@ -4,7 +4,6 @@ import {light} from './styles/Themes';
 
 import Navigation from './components/Navigation';
 import Home from './components/sections/Home';
-import About from './components/sections/About';
 import Courses from './components/sections/Courses';
 import Footer from './components/Footer';
 

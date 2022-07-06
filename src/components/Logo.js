@@ -4,7 +4,9 @@ import LogoImg from '../assets/Logo.svg'
 
 const LogoText = styled.a`
   cursor: pointer;
-  font-size: ${props => props.theme.fontxxxl};
+  font-size: ${props => props.theme.arrowSize};
+  display: flex;
+  align-items: center;
   
   img{
     width: ${props => props.theme.fontlg};

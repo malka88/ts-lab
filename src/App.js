@@ -6,15 +6,17 @@ import Navigation from './components/Navigation';
 import Home from './components/sections/Home';
 import Courses from './components/sections/Courses';
 import Footer from './components/Footer';
+import Benefits from './components/sections/Benefits';
 
 function App() {
   return (
     <>
-    <GlobalStyles />
+      <GlobalStyles />
       <ThemeProvider theme={light}>
-      <Navigation />
+        <Navigation />
         <Home />
         <Courses />
+        <Benefits />
         <Footer />
       </ThemeProvider>
     </>

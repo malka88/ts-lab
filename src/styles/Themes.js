@@ -14,9 +14,9 @@ export const light = {
     extraSize: '7.25rem',
     extraSizeM: '4.75rem',
     extraSizeS: '2.5rem',
-    arrowSize: '2rem',
+    arrowSize: '4.5rem',
 
     fontButton: '0.875',
 
-    navHeight: '5rem'
+    navHeight: '6rem'
 }

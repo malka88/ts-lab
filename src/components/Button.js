@@ -57,7 +57,6 @@ const Btn = styled.a`
         clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
         background: ${props => props.theme.text};
     }
-
 `
 
 const Button = ({text, link, target}) => {

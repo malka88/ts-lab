@@ -6,6 +6,7 @@ import Vector from '../icons/Vector'
 
 const VectorContainer = styled.div`
     position: absolute;
+    top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -13,7 +14,8 @@ const VectorContainer = styled.div`
     overflow: hidden;
 
     @media (max-width: 64em){
-      transform: translateX(-90%);
+      transform: translateX(-97%);
+      height: 100%;
     }
 
     svg{

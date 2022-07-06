@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import Typewriter from 'typewriter-effect';
 
 const Title = styled.h1`
-    padding-left: 2rem;
     font-size: ${props => props.theme.fontxxl};
     color: ${props => props.theme.text};
-    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
     @media (max-width: 64em){
         font-size: ${props => props.theme.fontxl};
@@ -48,11 +50,19 @@ const TypeWriterText = () => {
                 .typeString('<span>геймдизайне</span>')
                 .pauseFor(2000)
                 .deleteAll()
+                .typeString('<span>SMM</span>')
+                .pauseFor(2000)
+                .deleteAll()
+                .typeString('<span>3D</span>')
+                .pauseFor(2000)
+                .deleteAll()
+                .typeString('<span>аналитике данных</span>')
+                .pauseFor(2000)
+                .deleteAll()
                 .start()
             }}
         />
     </Title>
-    
   )
 }
 

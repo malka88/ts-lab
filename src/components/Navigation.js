@@ -5,14 +5,12 @@ import Logo from './Logo'
 
 const Section = styled.section`
   width: 100vw;
-  background-color: ${props => props.theme.body};
 `
 
 const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   width: 85%;
   height: ${props => props.theme.navHeight};
   margin: 0 auto;
@@ -92,53 +90,28 @@ const MenuItem = styled.li`
   }
 
   @keyframes glitchLine {
-    0% {
-        transform: scale3d(1, 1, 1);
-    }
 
-    10% {
-        transform: translate3d(10px, 0, 0);
-    }
+    0% { transform: scale3d(1, 1, 1); }
 
-    20% {
-        transform: translate3d(0, 4px, 0);
-    }
+    10% { transform: translate3d(10px, 0, 0); }
 
-    30% {
-        transform: scale3d(0.1, 1.4, 1) translate3d(0, -25px, 0);
-        transform-origin: 100% 0%;
-    }
+    20% { transform: translate3d(0, 4px, 0); }
 
-    40% {
-        transform: scale3d(1, 0.3, 1) translate3d(0, 25px, 0);
-    }
+    30% { transform: scale3d(0.1, 1.4, 1) translate3d(0, -25px, 0); transform-origin: 100% 0%; }
 
-    50% {
-        transform: scale3d(0.5, 0.3, 1) translate3d(-100px, -80px, 0);
-    }
+    40% { transform: scale3d(1, 0.3, 1) translate3d(0, 25px, 0); }
 
-    60% {
-        transform: scale3d(1, 1.25, 1) translate3d(10px, -5px, 0);
-    }
+    50% { transform: scale3d(0.5, 0.3, 1) translate3d(-100px, -80px, 0); }
 
-    70% {
-        transform: scale3d(0.5, 0.5, 1) translate3d(0, 20px, 0);
-    }
+    60% { transform: scale3d(1, 1.25, 1) translate3d(10px, -5px, 0); }
 
-    80% {
-        transform: translate3d(-30, 10px, 0) scale3d(1, 0.4, 1);
-        transform-origin: 100% 0%;
-    }
+    70% { transform: scale3d(0.5, 0.5, 1) translate3d(0, 20px, 0); }
 
-    90% {
-        transform: scale3d(1, 0.5, 1) translate3d(0, -15px, 0);
-        ;
-        transform-origin: 0% 50%;
-    }
+    80% { transform: translate3d(-30, 10px, 0) scale3d(1, 0.4, 1); transform-origin: 100% 0%; }
 
-    100% {
-        opacity: 1;
-    }
+    90% { transform: scale3d(1, 0.5, 1) translate3d(0, -15px, 0); transform-origin: 0% 50%; }
+
+    100% { opacity: 1; }
   }
 
   @media (max-width: 64em) {
@@ -156,7 +129,7 @@ const HamburgerMenu = styled.span`
   background: ${props => props.theme.text};
 
   position: absolute;
-  top: 2rem;
+  top: 2.75rem;
   left: 50%;
   transform: ${props => props.click ? 'translateX(-50%) rotate(90deg)' : 'translateX(-50%) rotate(0)'};
 
@@ -217,9 +190,10 @@ const Navigation = () => {
         </HamburgerMenu>
         <Menu click={click}>
           <MenuItem onClick={() => scrollTo('Courses')}>Курсы</MenuItem>
+          <MenuItem onClick={() => scrollTo('Benefits')}>Преимущества</MenuItem>
           <MenuItem onClick={() => scrollTo('Footer')}>Контакты</MenuItem>
         </Menu>
-          <Button link="#Footer" text="Записаться" />
+          <Button link="https://docs.google.com/forms/d/e/1FAIpQLSdNHOth76tTbyqo9zbLkQrjM--AIjNxyL3jkpXfOXyu2QY9DQ/viewform" target="_blank" text="Записаться"/>
       </NavBar>
     </Section>
   )

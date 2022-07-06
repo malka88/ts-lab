@@ -1,6 +1,4 @@
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import React, { useRef, useLayoutEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import DrawSvg from '../DrawSvg'
 
@@ -18,8 +16,8 @@ const Title = styled.h2`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem auto;
-  border-bottom: 2px soItemd ${props => props.theme.body};
+  margin: auto;
+  border-bottom: 2px solid ${props => props.theme.body};
   width: fit-content;
 
   @media (max-width: 64em){
@@ -32,18 +30,18 @@ const Title = styled.h2`
 `
 
 const Container = styled.div`
-  width: 100%;
-  height: 100vh;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+
 `
 
 const SvgContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `
 
@@ -54,15 +52,24 @@ const Items = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
-  @media (max-width: 64em){
-    flex-direction: column;
-    width: 80%;
+  &>*:nth-of-type(2n+1){
+    justify-content: start;
+
+    @media (max-width: 64em){
+      justify-content: end;
+      padding-right: 1rem;
+    }
   }
 
-  @media (max-width: 48em){
-    flex-direction: column;
-    width: 70%;
+  &>*:nth-of-type(2n){
+    justify-content: end;
+
+    @media (max-width: 64em){
+      justify-content: end;
+      padding-right: 1rem;
+    }
   }
 `
 
@@ -70,7 +77,7 @@ const Item = styled.li`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  padding-bottom: 1rem;
 
   @media (max-width: 64em){
     margin-bottom: 1rem;
@@ -78,10 +85,23 @@ const Item = styled.li`
 `
 
 const ItemContainer = styled.div`
-  width: 80%;
+  width: 40%;
   height: fit-content;
   padding: 1rem;
   border: 2px solid ${props => props.theme.body};
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  @media (max-width: 64em){
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 75%;
+  }
+
+  @media (max-width: 48em){
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 `
 
 const Box = styled.div`
@@ -125,13 +145,12 @@ const Text = styled.span`
   }
 `
 
-const CoursesItem = ({title, duration, level, subtext, addToRef, firstSub, secondSub, thirdSub}) => {
+const CoursesItem = ({title, level, subtext, firstSub, secondSub, thirdSub}) => {
   return (
-    <Item ref={addToRef}>
+    <Item>
       <ItemContainer>
         <Box>
           <SubTitle>{title}</SubTitle><br/>
-          <Text>{duration}</Text>
           <Text>{level}</Text>
           <Text>{subtext}</Text>
           <ul>
@@ -147,43 +166,6 @@ const CoursesItem = ({title, duration, level, subtext, addToRef, firstSub, secon
 
 const Courses = () => {
   
-  const revealRefs = useRef([]);
-  revealRefs.current = [];
-  gsap.registerPlugin(ScrollTrigger);
-
-  const addToRefs = (el) => {
-    if(el && !revealRefs.current.includes(el)) {
-      revealRefs.current.push(el);
-    }
-  }
-
-  useLayoutEffect(() => {
-    let t1 = gsap.timeline();
-    revealRefs.current.forEach( (el, index) => {
-      t1.fromTo(
-        el.childNodes[0],
-        {
-          y: '0'
-        }, {
-          y: '-30',
-
-          scrollTrigger: {
-            id: `section-${index + 1}`,
-            trigger: el,
-            start: 'top center+=100px',
-            end: 'bottom center',
-            scrub: true
-          }
-        }
-      )
-      
-    } )
-  
-    return () => {
-      
-    };
-  }, [])
-  
   return (
     <Section id="Courses">
       <Title>Курсы</Title>
@@ -192,25 +174,42 @@ const Courses = () => {
           <DrawSvg />
         </SvgContainer>
         <Items>
-          <CoursesItem
-            addToRef={addToRefs}
-            title="Веб-разработка"
-            duration="Срок обучения: 6 месяцев"
-            level="Уровень подготовки: с нуля"
-            subtext="Чему научитесь:"
-            firstSub="верстка - основы HTML5/ CSS3"
-            secondSub="интерактивность - модули и фреймворки JS"
-            thirdSub="кроссплатформенность - разработка под различные устройства"/>
-          <CoursesItem
-            addToRef={addToRefs}
-            title="Геймдизайн"
-            duration=""
-            level=""
-            subtext="Описание"
-            firstSub=""
-            secondSub=""
-            thirdSub=""/>
-        </Items>
+            <CoursesItem
+              title="Веб-разработчик"
+              level="Получите навыки создания сайтов и веб-приложений"
+              subtext="Чему научитесь:"
+              firstSub="верстка - основы HTML5/ CSS3"
+              secondSub="интерактивность - модули и фреймворки JS"
+              thirdSub="кроссплатформенность - разработка под различные устройства"/>
+            <CoursesItem
+              title="Геймдизайнер"
+              level="Получите навыки проектирования интересных игровых миров и создания увлекательного опыта"
+              subtext="Чему научитесь:"
+              firstSub="создание качественных игровых миров"
+              secondSub="грамотная монетизация своих творений"
+              thirdSub="геймификация неигровых продуктов"/>
+            <CoursesItem
+              title="SMM-специалист"
+              level="Получите навыки продвижения в соцсетях, создания контента и работы с аудиторией"
+              subtext="Чему научитесь:"
+              firstSub="создание и анализ рекламы в соцсетях"
+              secondSub="создание фото и видео контента"
+              thirdSub="умение работать с аудиторией"/>
+            <CoursesItem
+              title="3D-дженералист"
+              level="Получите навыки для работы с 3D в любой сфере"
+              subtext="Чему научитесь:"
+              firstSub="создание моделей в 3d редакторах"
+              secondSub="работа с текстурами, формой и цветом"
+              thirdSub="анимация объектов"/>
+            <CoursesItem
+              title="Аналитик данных"
+              level="Получите навык преобразованния сырых данных в полезную информацию"
+              subtext="Чему научитесь:"
+              firstSub="изучение язык запросов SQL"
+              secondSub="освоение библиотеки Python"
+              thirdSub="работа c файлами, HTML-страницами и API"/>
+          </Items>
       </Container>
     </Section>
   )

@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import "@fontsource/montserrat";
 import "@fontsource/anonymous-pro";
-import "@fontsource/dotgothic16";
 
 const GlobalStyles = createGlobalStyle`
 
